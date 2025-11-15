@@ -18,7 +18,7 @@ function updateSite()
         LogMessage($result);
 
         LogMessage("Update building scripts rights...");
-	$result = shell_exec('chmod -R 777 ./.. 2>&1');
+	$result = shell_exec('chmod -R +x ./../rebuild_website.sh ./../book 2>&1');
 	LogMessage($result);
 
 	LogMessage("Run build scripts...");
