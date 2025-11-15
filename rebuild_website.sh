@@ -10,6 +10,7 @@
 
 #installation des packages requis
 python3 -m pip install beautifulsoup4 lxml --no-input
+snap install mdbook
 
 # ---------------------------------------------------------------
 # variables declaration
@@ -124,7 +125,7 @@ ln -s ${root_dir}/book/doc/css ${root_dir}/book/css
 ln -s ${root_dir}/book/doc/FontAwesome ${root_dir}/book/FontAwesome
 ln -s ${root_dir}/book/doc/fonts ${root_dir}/book/fonts
 
-# add link thumbnails
+# add link thumbnails (a bit long to make)
 #python3 -m thumbnail.py
 # update favicons
 python3 -m favicon.py || true
@@ -163,8 +164,8 @@ cp ${root_dir}/resources/robots.txt ${root_dir}/book/robots.txt
 
 # ---------------------------------------------------------------
 # LARGE FILE DOWNLOAD
-echo "[ GIT LFS CHECKOUT PART ] "
-cd ${root_dir}
+#echo "[ GIT LFS CHECKOUT PART ] "
+#cd ${root_dir}
 # define $HOME for the user (www-data) 
-export HOME=/home/www-data
-git lfs install --force && git lfs fetch && git lfs checkout
+#export HOME=/home/www-data
+#git lfs install --force && git lfs fetch && git lfs checkout
