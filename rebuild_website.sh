@@ -13,8 +13,7 @@ python3 -m venv venv
 source venv/bin/activate
 
 # installation des packages requis
-python3 -m pip install beautifulsoup4 lxml --no-input
-snap install mdbook
+python3 -m pip install beautifulsoup4 lxml pillow --no-input
 
 # ---------------------------------------------------------------
 # variables declaration
@@ -30,8 +29,6 @@ cd ${root_dir}/scripts
 python3 -m hall_of_fame.py || true
 # set the links in .mb
 python3 -m link_md.py || true
-# build the requirement tests result md page
-python3 -m test-results.py || true
 # update the glossary to each src/**/*.md page
 python3 -m glossary.py || true
 # update the variables values to each src/**/*.md page
@@ -49,7 +46,7 @@ cd ${root_dir}
 
 # save previous build
 rm -rf ${root_dir}/book.previous_build
-mv ${root_dir}/book ${root_dir}/book.previous_build
+mv ${root_dir}/book ${root_dir}/book.previous_build || true
 
 # ---------------------------------------------------------------
 # BUILD SCRIPTS
@@ -92,8 +89,6 @@ python3 -m custom-css.py || true
 python3 -m custom-js.py || true
 # update the navigation summary
 python3 -m nav-summary.py || true
-# update the requirements tests results format for PASS, FAIL and NOT_TESTED cells
-python3 -m test-results-format.py || true
 ## update summary title and subtitle
 python3 -m summary_title.py || true
 # update the rating system
