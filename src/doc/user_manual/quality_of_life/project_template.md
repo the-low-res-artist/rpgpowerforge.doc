@@ -17,8 +17,6 @@ The Project Template feature allows you to creates a new RPG Power Forge fresh p
 
 The Project Template is located in the RPG Power Forge Toolbar :
 
-![window_location.png](../../../../media/user_manual/quality_of_life/statusbar/xxx.png)
-
 ## Feature details
 
 

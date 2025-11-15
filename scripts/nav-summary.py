@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup # manage html file to add/remove classes to elemen
 def set_nav_summary(filename):
     
     # define regex
-    NUMBER_CHAPTER_REGEX = "(<strong aria-hidden=\"true\">([0-9]+\.)+</strong>)"
+    NUMBER_CHAPTER_REGEX = r"(<strong aria-hidden=\"true\">([0-9]+\.)+</strong>)"
     
     # Safely read the input filename using 'with'
     s= ""

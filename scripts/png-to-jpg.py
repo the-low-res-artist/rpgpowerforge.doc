@@ -21,7 +21,7 @@ def set_png_to_jpg(filename):
         return
 
     # find all images call in the md file
-    images_path = re.findall("!\[.+?\]\(.+?(media.+?\.png)\)", s)
+    images_path = re.findall(r"!\[.+?\]\(.+?(media.+?\.png)\)", s)
 
     # iterate images
     for png_image_path in images_path:

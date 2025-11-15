@@ -133,7 +133,7 @@ cd ${root_dir}
 
 ## zip user manual resources files
 cd ${root_dir}/media/
-zip -r user_resources.zip user_resources
+zip -r user_resources.zip user_resources || true
 
 cd ${root_dir}
 
