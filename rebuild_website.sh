@@ -8,7 +8,11 @@
 # build depuis la machine ubuntu pour faire des build test en local
 # créer la version francaise et tester la redirection de langue (la page doit exister, obligatoire)
 
-#installation des packages requis
+# virtual env creation
+python3 -m venv venv
+source venv/bin/activate
+
+# installation des packages requis
 python3 -m pip install beautifulsoup4 lxml --no-input
 snap install mdbook
 
@@ -169,3 +173,8 @@ cp ${root_dir}/resources/robots.txt ${root_dir}/book/robots.txt
 # define $HOME for the user (www-data) 
 #export HOME=/home/www-data
 #git lfs install --force && git lfs fetch && git lfs checkout
+
+
+# ---------------------------------------------------------------
+# desactivate the virtual env
+deactivate
