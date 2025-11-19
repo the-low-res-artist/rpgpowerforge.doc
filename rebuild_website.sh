@@ -15,7 +15,6 @@ source venv/bin/activate
 # installation des packages requis
 python3 -m pip install beautifulsoup4 lxml pillow --no-input
 
-
 # ---------------------------------------------------------------
 # variables declaration
 root_dir=${PWD}
