@@ -42,22 +42,24 @@ python3 -m highlight-actions.py || true
 # replace png images with jpg lighter ones
 python3 -m png-to-jpg.py || true
 
-cd ${root_dir}
-
 # save previous build
-rm -rf ${root_dir}/book.previous_build
-mv ${root_dir}/book ${root_dir}/book.previous_build || true
+if [ -d "${root_dir}/book" ]; then
+    rm -rf ${root_dir}/book.previous_build || true
+    mv ${root_dir}/book ${root_dir}/book.previous_build
+fi
 
 # ---------------------------------------------------------------
 # BUILD SCRIPTS
 echo "[ BUILD PART ] "
-# find all the book.toml files and execute the build
-for folder in $(find src -type d);
-do
-    # si le dossier courant contient le fichier book.toml, alors build du book
+# find all folders under ./src
+cd ${root_dir}
+for folder in $(find src -type d); do
+    # find all the book.toml files and execute the build
     if [ -f "${folder}/book.toml" ]; then
-        echo mdbook build ${root_dir}/${folder} -d ${root_dir}/${folder/src/book}
-        mdbook build ${root_dir}/${folder} -d ${root_dir}/${folder/src/book}
+        # Replace "src" with "book"
+        output_dir="${folder/src/book}"
+        echo "Building: ${root_dir}/${folder} -> ${root_dir}/${output_dir}"
+        mdbook build "${root_dir}/${folder}" -d "${root_dir}/${output_dir}"
     fi
 done
 
