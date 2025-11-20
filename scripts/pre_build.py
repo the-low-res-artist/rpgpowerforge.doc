@@ -32,7 +32,7 @@ def hall_of_fame(content):
             link = sup["link"]
             link_text = link.replace("http://", "").replace("https://", "")
             sub_str = f"{sub_str} : [{link_text}]({link})"
-        list_replacement.add(sub_str)
+        list_replacement.append(sub_str)
 
     str_replacement = "\n".join(list_replacement)
     return content.replace(str_to_replace, str_replacement)
