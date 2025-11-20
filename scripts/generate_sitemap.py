@@ -51,7 +51,7 @@ class Xml:
         # Walk through the directory structure
         for path in Path(website_root).rglob("*.html"):
             # Get the full path of the HTML file
-            path = path.replace(website_root, "https://rpgpowerforge.com/")
+            path = str(path).replace(website_root, "https://rpgpowerforge.com")
             self.urlset.urls.append(Url(path))
 
     def get_sitemap(self):
