@@ -40,7 +40,7 @@ def hall_of_fame(content):
 
 # =========================================================
 # set external links
-def external_links(filepath, content):
+def external_links(content):
 
     # init
     str_to_replace = "(link_patreon)"
@@ -183,8 +183,7 @@ def main():
                     
             # -----------------------------------------------------------------
             # md file !
-            print(filepath)
-            print(filepath.name)
+            print(f"Processing {filepath.name}...")
             content = ""
             with open(filepath, 'r', encoding="utf8") as f:
                 content = f.read()
