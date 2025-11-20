@@ -29,12 +29,12 @@ fi
 
 # ---------------------------------------------------------------
 # Pre-build script
-echo "[ WEBSITE : PRE-BUILD SCRIPT ]"
+echo " ======================= [ WEBSITE : PRE-BUILD SCRIPT ] ======================="
 python3 ${ROOT}/scripts/pre_build.py
 
 # ---------------------------------------------------------------
 # BUILD SCRIPTS
-echo "[ WEBSITE : BUILD ] "
+echo " ======================= [ WEBSITE : BUILD ] ======================="
 # find all folders under ./src
 for folder in $(find src -type d); do
     # find all the book.toml files and execute the build
@@ -48,7 +48,7 @@ done
 
 # ---------------------------------------------------------------
 # POST BUILD SCRIPTS
-echo "[ WEBSITE : POST-BUILD SCRIPT ]"
+echo " ======================= [ WEBSITE : POST-BUILD SCRIPT ] ======================="
 python3 ${ROOT}/scripts/post_build.py
 
 

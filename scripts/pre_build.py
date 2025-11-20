@@ -180,6 +180,7 @@ def main():
         # iterate all files, find md files
         for root, dirs, files in os.walk(SRC_ROOT, topdown=False):
             for filename in files:
+                print(filename)
                 if filename.endswith(".md"):
                     
                     # -----------------------------------------------------------------
