@@ -8,7 +8,12 @@
 # créer la version francaise et tester la redirection de langue (la page doit exister, obligatoire)
 
 # ---------------------------------------------------------------
+# variables declaration
+ROOT=${PWD}
+
+# ---------------------------------------------------------------
 # virtual env creation
+cd ${HOME}
 python3 -m venv venv
 source venv/bin/activate
 
@@ -17,8 +22,9 @@ source venv/bin/activate
 pip install -r requirements.txt --no-input
 
 # ---------------------------------------------------------------
-# variables declaration
-ROOT=${PWD}
+# install mdbook plugins
+cargo install mdbook-admonish --vers "1.20.0" --locked
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # ---------------------------------------------------------------
 # Save previous book
