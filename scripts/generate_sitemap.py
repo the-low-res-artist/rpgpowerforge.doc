@@ -1,13 +1,19 @@
 
-import re # regex operations
-import sys # to return 0
-import os # loop over files
-from config import config
-import datetime # to get the date
-import time # measure duration
+import re
+import sys
+import os
+import datetime 
+from pathlib import Path
 
-# goal : create the sitemap.xml file
-# ---------------------------------
+from config import config
+
+
+# =========================================================
+# constant values
+BOOK_ROOT = "/home/www-data/rpgpowerforge/book"
+
+
+# =========================================================
 class Url:
     def __init__(self, loc):
         self.loc = loc
@@ -24,7 +30,7 @@ class Url:
     <priority>{self.priority}</priority>
 </url>"""
 
-# ---------------------------------
+# =========================================================
 class Urlset:
     def __init__(self):
         self.urls = []
@@ -36,29 +42,24 @@ class Urlset:
         sitemap += "\n</urlset>"
         return sitemap
 
-# ---------------------------------
+# =========================================================
 class Xml:
     def __init__(self):
         self.urlset = Urlset()
 
     def crawl(self, website_root):
         # Walk through the directory structure
-        for root, _, files in os.walk(website_root):
-            for file in files:
-                # Check if the file has a .html extension
-                if file.endswith('.html'):
-                    # Get the full path of the HTML file
-                    path = os.path.join(root, file)
-                    path = path.replace("./../book/", "https://rpgpowerforge.com/")
-                    path = path.replace("\\", "/")
-                    self.urlset.urls.append(Url(path))
+        for path in Path(website_root).rglob("*.html"):
+            # Get the full path of the HTML file
+            path = path.replace(website_root, "https://rpgpowerforge.com/")
+            self.urlset.urls.append(Url(path))
 
     def get_sitemap(self):
         sitemap = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
         sitemap += self.urlset.get_sitemap()
         return sitemap
 
-# ---------------------------------
+# =========================================================
 class Sitemap:
     def __init__(self):
         self.xml = Xml()
@@ -70,9 +71,7 @@ class Sitemap:
         with open(sitemap_filepath, 'w', encoding="utf8") as f:
             f.write(self.xml.get_sitemap())
 
-# ---------------------------------
-
-
+# =========================================================
 # generate the sitemap file
 def generate_sitemap(website_root, sitemap_filepath):
     sitemap = Sitemap()
@@ -80,11 +79,8 @@ def generate_sitemap(website_root, sitemap_filepath):
     sitemap.write(sitemap_filepath)
 
 
+# =========================================================
 # entry point
-start = time.time()
-generate_sitemap("./../book/", "./../book/sitemap.xml")
-end = time.time()
-print(f"[{str(round(end - start, 1))} sec] SITEMAP UPDATE : 1 updated")
-
-# safe return
-sys.exit(0)
+if __name__ == "__main__":
+    generate_sitemap(BOOK_ROOT, f"{BOOK_ROOT}/sitemap.xml")
+    sys.exit(0)

@@ -50,6 +50,12 @@ done
 # POST BUILD SCRIPTS
 echo " ======================= [ WEBSITE : POST-BUILD SCRIPT ] ======================="
 python3 ${ROOT}/scripts/post_build.py
+python3 ${ROOT}/scripts/generate_sitemap.py
+
+# ---------------------------------------------------------------
+# MAKE CSS and JS AVAILABLE
+cp -r ${ROOT}/custom-css ${ROOT}/book/custom-css
+cp -r ${ROOT}/custom-js ${ROOT}/book/custom-js
 
 
 

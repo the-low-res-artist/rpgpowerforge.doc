@@ -32,7 +32,6 @@ class config:
                     "footer.css", 
                     "main.css", 
                     "mdbook-admonish.css", 
-                    "rating.css", 
                     "summary.css"]
 
     css_black_list = ["hero.css"]
