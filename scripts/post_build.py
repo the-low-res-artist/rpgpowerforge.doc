@@ -30,7 +30,7 @@ def custom_css(filepath, content):
     # iterate all files, find css files
     for css_filepath in Path(CSS_ROOT).rglob("*.css"):
 
-        css_webpath = css_filepath.replace(BOOK_ROOT, "https://rpgpowerforge.com")
+        css_webpath = str(css_filepath).replace(BOOK_ROOT, "https://rpgpowerforge.com")
 
         # skip black list css files
         if css_filepath.name in black_list:
