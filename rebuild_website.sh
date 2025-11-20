@@ -30,7 +30,7 @@ fi
 # ---------------------------------------------------------------
 # Pre-build script
 echo "[ WEBSITE : PRE-BUILD SCRIPT ]"
-python3 -m ${ROOT}/script/pre_build.py
+python3 -m ${ROOT}/script/pre_build
 
 # ---------------------------------------------------------------
 # BUILD SCRIPTS
@@ -49,7 +49,7 @@ done
 # ---------------------------------------------------------------
 # POST BUILD SCRIPTS
 echo "[ WEBSITE : POST-BUILD SCRIPT ]"
-python3 -m ${ROOT}/script/post_build.py
+python3 -m ${ROOT}/script/post_build
 
 
 
