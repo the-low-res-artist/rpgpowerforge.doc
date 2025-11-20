@@ -54,7 +54,7 @@ def custom_css(filepath, content):
     str_to_replace = "<!-- Custom theme stylesheets -->"
     str_replacement = "<!-- Custom theme stylesheets -->\n" + '\n'.join(css_links)
 
-    return replace(str_to_replace, str_replacement)
+    return content.replace(str_to_replace, str_replacement)
 
 
 
