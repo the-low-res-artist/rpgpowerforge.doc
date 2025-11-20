@@ -58,7 +58,7 @@ def glossary(filepath, content):
 
     # safe exit
     if (len(matches) == 0):
-        return
+        return content
 
     for match in matches:
         str_to_replace=match[0]
@@ -86,15 +86,10 @@ def glossary(filepath, content):
 # set variables
 def variables(content):
 
-    print(content)
-
     for key, value in config.md_variables.items():
         str_to_replace = key
         str_replacement = value
-        print(f"#### {str_to_replace} : {str_replacement}")
         content = content.replace(str_to_replace, str_replacement)
-
-    print(content)
 
     return content
 
@@ -156,10 +151,6 @@ def highlight_actions(content):
 
     # find all matches
     matches = re.findall(config.action_regex, content)
-
-    # safe exit
-    if (len(matches) == 0):
-        return
 
     for match in matches:
         str_to_replace=match[0]
