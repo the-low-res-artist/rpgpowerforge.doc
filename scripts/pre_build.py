@@ -184,8 +184,9 @@ def main():
             # -----------------------------------------------------------------
             # md file !
             print(filepath)
+            print(filepath.name)
             content = ""
-            with open(filename, 'r', encoding="utf8") as f:
+            with open(filepath, 'r', encoding="utf8") as f:
                 content = f.read()
 
             # -----------------------------------------------------------------
@@ -199,7 +200,7 @@ def main():
 
             # -----------------------------------------------------------------
             # name specific settings
-            if (filename == "hall_of_fame.md"): content = hall_of_fame(content)
+            if (filepath.name == "hall_of_fame.md"): content = hall_of_fame(content)
 
             # -----------------------------------------------------------------                    
             # Save the updated content
