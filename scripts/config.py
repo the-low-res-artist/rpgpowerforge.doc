@@ -15,7 +15,13 @@ class config:
         "VAR_UNITY_SHORT_MIN_VERSION" : "2022.3",
         "VAR_UNITY_MIN_VERSION" : "2022.3.34f1",
         "VAR_RPF_RECOMMENDED_VERSION" : "0.3.0",
-        "TRELLO_WEBSITE_LINK": "https://trello.com/b/PIzgsYov/road-map"
+
+        "TRELLO_WEBSITE_LINK": "https://trello.com/b/PIzgsYov/road-map",
+        "TWITTER_WEBSITE_LINK": "https://twitter.com/RPGPowerForge",
+        "DISCORD_WEBSITE_LINK": "https://onesquareminesweeper.com/",
+        "TRELLO_WEBSITE_LINK": "https://trello.com/b/PIzgsYov/road-map",
+        "YOUTUBE_WEBSITE_LINK": "https://www.youtube.com/@rpgpowerforge",
+        "PATREON_WEBSITE_LINK": "https://www.patreon.com/rpgpowerforge/membership"
     }
 
     # =============================================================================
@@ -48,13 +54,21 @@ class config:
 
     # =============================================================================
     # =============================================================================
-    # links for the nav bar
-    link_x = "https://twitter.com/RPGPowerForge"
-    link_discord = "https://onesquareminesweeper.com/"
-    link_trello = "https://trello.com/b/PIzgsYov/road-map"
-    link_youtube = "https://www.youtube.com/@rpgpowerforge"
-    link_patreon = "https://www.patreon.com/rpgpowerforge/membership"
-    link_kofi = "https://ko-fi.com/rpgpowerforge/tiers"
+    # glossary
+    glossary_color="orange"
+    glossary_regex=r"(\?([\w ]+?)\?)"
+    glossary_list = [
+        {"pivot":"A point placed on a sprite or prefab"},
+        {"requirement":"A description of a piece of the software system to deliver"},
+        {"animation collection":"Animations packaged in one file for easy edition"}
+    ]
+
+
+    # =============================================================================
+    # =============================================================================
+    # action
+    action_regex=r"(\[\[(.+?)\]\])"
+
     # =============================================================================
     # =============================================================================
     # favicon
@@ -119,7 +133,7 @@ class config:
 
     # =============================================================================
     # =============================================================================
-    #youtube devlogs embedded
+    # youtube devlogs embedded
     devlogs = [
         {"title":"RPG Power Forge 0.5 (sample)","iframe_src":"https://www.youtube.com/embed/y0sF5xhGreA?si=IZd2hC1kchiVtlvi"},
         {"title":"RPG Power Forge 0.6 (sample)","iframe_src":"https://www.youtube.com/embed/pxn0wL_uSm4?si=PNjljJmqxKf8Nkot"},
@@ -138,6 +152,6 @@ class config:
         {"name":"OneLonelyDev"},
         {"name":"Jefferson Wolfe"},
         {"name":"Danny Nanni"},
-        {"name": "Team Abarth"}
+        {"name":"Team Abarth"}
     ]   
         
