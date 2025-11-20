@@ -190,15 +190,22 @@ def main():
 
             # -----------------------------------------------------------------
             # general settings
+            print("external_links")
             content = external_links(content)
+            print("glossary")
             content = glossary(filepath, content)
+            print("variables")
             content = variables(content)
+            print("highlight_terms")
             content = highlight_terms(content)
+            print("highlight_actions")
             content = highlight_actions(content)
+            print("summary")
             content = summary(content)
 
             # -----------------------------------------------------------------
             # name specific settings
+            print("hall_of_fame")
             if (filepath.name == "hall_of_fame.md"): content = hall_of_fame(content)
 
             # -----------------------------------------------------------------                    
