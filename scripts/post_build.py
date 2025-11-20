@@ -38,7 +38,7 @@ def custom_css(filepath, content):
 
         # add if in common list
         if css_filepath.name in common_list:
-            css_links.append(f"<link rel=\"stylesheet\" href=\"custom-css/{css_webpath}\">")
+            css_links.append(f"<link rel=\"stylesheet\" href=\"{css_webpath}\">")
 
         # also add if the css file has the same name as the current html file
         else:
@@ -49,7 +49,7 @@ def custom_css(filepath, content):
                 html_filename = "home"
 
             if css_filepath.stem == html_filename:
-                css_links.append(f"<link rel=\"stylesheet\" href=\"custom-css/{css_webpath}\">")
+                css_links.append(f"<link rel=\"stylesheet\" href=\"{css_webpath}\">")
 
     str_to_replace = "<!-- Custom theme -->"
     str_replacement = "<!-- Custom theme -->\n" + '\n'.join(css_links)
