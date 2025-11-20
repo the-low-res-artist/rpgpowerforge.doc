@@ -54,7 +54,7 @@ def external_links(content):
 def glossary(filepath, content):
 
     # find all matches
-    matches = re.findall(config.glossary_regex, s)
+    matches = re.findall(config.glossary_regex, content)
 
     # safe exit
     if (len(matches) == 0):
@@ -122,7 +122,7 @@ def summary(content):
             # append title (if found)
             if (len(title) > 0):
                 link=title.lower().replace(" ","-").replace("(","").replace(")","")
-                summary += ' '*offset + f"- [{title}](#{link})\n"
+                summary += ' ' * offset + f"- [{title}](#{link})\n"
 
     # update summary (if found)
     if (len(summary) > 0):
@@ -150,7 +150,7 @@ def highlight_terms(content):
 def highlight_actions(content):
 
     # find all matches
-    matches = re.findall(config.action_regex, s)
+    matches = re.findall(config.action_regex, content)
 
     # safe exit
     if (len(matches) == 0):
@@ -204,7 +204,7 @@ def main():
             # -----------------------------------------------------------------                    
             # Save the updated content
             with open(filepath, 'w', encoding="utf8") as f:
-                f.write(s)
+                f.write(content)
 
     except Exception as e:
         print(e)
