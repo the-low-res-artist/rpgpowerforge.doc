@@ -89,7 +89,10 @@ def variables(content):
     for key, value in config.md_variables.items():
         str_to_replace = key
         str_replacement = value
+        print(f"#### {str_to_replace} : {str_replacement}")
         content = content.replace(str_to_replace, str_replacement)
+
+    print(content)
 
     return content
 
