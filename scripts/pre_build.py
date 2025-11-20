@@ -44,7 +44,7 @@ def external_links(content):
 
     # init
     str_to_replace = "(link_patreon)"
-    str_replacement = f"({config.link_patreon})"
+    str_replacement = f"(" + config.md_variables["PATREON_WEBSITE_LINK"] + ")"
 
     return content.replace(str_to_replace, str_replacement)
 
