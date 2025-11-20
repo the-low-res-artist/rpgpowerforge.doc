@@ -5,6 +5,7 @@ import re
 import sys 
 import os 
 import time
+from pathlib import Path
 
 from config import config
 
@@ -178,38 +179,35 @@ def main():
         
         # -----------------------------------------------------------------
         # iterate all files, find md files
-        for root, dirs, files in os.walk(SRC_ROOT, topdown=False):
-            for filename in files:
-                print(filename)
-                if filename.endswith(".md"):
+        for filepath in Path(SRC_ROOT).rglob("*.md"):
                     
-                    # -----------------------------------------------------------------
-                    # md file !
-                    filepath = os.path.join(root, filename)
-                    content = ""
-                    with open(filename, 'r', encoding="utf8") as f:
-                        content = f.read()
+            # -----------------------------------------------------------------
+            # md file !
+            print(filepath)
+            content = ""
+            with open(filename, 'r', encoding="utf8") as f:
+                content = f.read()
 
-                    # -----------------------------------------------------------------
-                    # general settings
-                    content = external_links(content)
-                    content = glossary(filepath, content)
-                    content = variables(content)
-                    content = highlight_terms(content)
-                    content = highlight_actions(content)
-                    content = summary(content)
+            # -----------------------------------------------------------------
+            # general settings
+            content = external_links(content)
+            content = glossary(filepath, content)
+            content = variables(content)
+            content = highlight_terms(content)
+            content = highlight_actions(content)
+            content = summary(content)
 
-                    # -----------------------------------------------------------------
-                    # name specific settings
-                    if (filename == "hall_of_fame.md"): content = hall_of_fame(content)
+            # -----------------------------------------------------------------
+            # name specific settings
+            if (filename == "hall_of_fame.md"): content = hall_of_fame(content)
 
-                    # -----------------------------------------------------------------                    
-                    # Save the updated content
-                    with open(filepath, 'w', encoding="utf8") as f:
-                        f.write(s)
+            # -----------------------------------------------------------------                    
+            # Save the updated content
+            with open(filepath, 'w', encoding="utf8") as f:
+                f.write(s)
 
     except Exception as e:
-        pass
+        print(e)
 
     finally:
         # duration & exit
