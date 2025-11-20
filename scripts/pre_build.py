@@ -100,29 +100,30 @@ def summary(content):
 
     # search titles (example : '## Create a project on itchio')
     summary = ""
-    with open(filename, 'r', encoding="utf8") as f:
-        for line in f.readlines():
-            # remove last \n
-            line=line[:-1]
-            # skip summary itself
-            if (line == "## Summary"):
-                continue
-            # initialisation
-            title=""
-            offset=0
-            # test title
-            if line.startswith("## "):
-                title=line[3:]
-            if line.startswith("### "):
-                title=line[4:]
-                offset=4
-            if line.startswith("#### "):
-                title=line[5:]
-                offset=8
-            # append title (if found)
-            if (len(title) > 0):
-                link=title.lower().replace(" ","-").replace("(","").replace(")","")
-                summary += ' ' * offset + f"- [{title}](#{link})\n"
+    for line in content.splitlines():
+        
+        # skip summary itself
+        if (line == "## Summary"):
+            continue
+        
+        # initialisation
+        title=""
+        offset=0
+        
+        # test title line
+        if line.startswith("## "):
+            title=line[3:]
+        if line.startswith("### "):
+            title=line[4:]
+            offset=4
+        if line.startswith("#### "):
+            title=line[5:]
+            offset=8
+        
+        # append title (if found)
+        if (len(title) > 0):
+            link=title.lower().replace(" ","-").replace("(","").replace(")","")
+            summary += ' ' * offset + f"- [{title}](#{link})\n"
 
     # update summary (if found)
     if (len(summary) > 0):
