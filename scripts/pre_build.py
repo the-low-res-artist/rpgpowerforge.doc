@@ -86,6 +86,8 @@ def glossary(filepath, content):
 # set variables
 def variables(content):
 
+    print(content)
+
     for key, value in config.md_variables.items():
         str_to_replace = key
         str_replacement = value
