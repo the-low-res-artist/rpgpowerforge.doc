@@ -13,18 +13,12 @@ ROOT=${PWD}
 
 # ---------------------------------------------------------------
 # virtual env creation
-cd ${HOME}
 python3 -m venv venv
 source venv/bin/activate
 
 # ---------------------------------------------------------------
 # requirements
 pip install -r requirements.txt --no-input
-
-# ---------------------------------------------------------------
-# install mdbook plugins
-cargo install mdbook-admonish --vers "1.20.0" --locked
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # ---------------------------------------------------------------
 # Save previous book
