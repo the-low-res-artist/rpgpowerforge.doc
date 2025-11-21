@@ -12,3 +12,9 @@ preferred-dark-theme = "navy"
 [output.html.print]
 enable = false    # include support for printable output
 page-break = true # insert page-break after each chapter
+
+[preprocessor]
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
