@@ -409,6 +409,7 @@ def main():
             content = nav(content)
             content = title_icon(content)
             content = footer(content)
+            content = join_community(content)
 
             # -----------------------------------------------------------------
             # name specific settings
