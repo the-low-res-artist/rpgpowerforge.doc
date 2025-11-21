@@ -51,8 +51,8 @@ def custom_css(filepath, content):
             if css_filepath.stem == html_filename:
                 css_links.append(f"<link rel=\"stylesheet\" href=\"{css_webpath}\">")
 
-    str_to_replace = "<!-- Custom theme -->"
-    str_replacement = "<!-- Custom theme -->\n" + '\n'.join(css_links)
+    str_to_replace = "<!-- Custom theme stylesheets -->"
+    str_replacement = "<!-- Custom theme stylesheets -->\n" + '\n'.join(css_links)
 
     return content.replace(str_to_replace, str_replacement)
 
