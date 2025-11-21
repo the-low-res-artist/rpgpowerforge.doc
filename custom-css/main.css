@@ -30,7 +30,7 @@ blockquote {
 /* link top title */
 .menu-title {
     transition: 0.1s;
-    display: none;
+    /*display: none;*/
     margin-right: 0;
     margin-left: auto;
 }
