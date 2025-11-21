@@ -188,7 +188,7 @@ def home(content):
                 <div class=\"card-image\"><img alt=\"Image of a pixelart game mockup\" width=\"477\" height=\"308\" src=\"https://rpgpowerforge.com/media/home/card_getting_started.png\"></img></div>\
                 <div class=\"card-text\"><h3>Getting started !</h3><p>Begin your RPG journey with all the online help you need !</p></div>\
             </div>\
-            <div class=\"card card3\" onclick=\"window.location.href = '{config.link_discord}';\" style=\"cursor: pointer;\">\
+            <div class=\"card card3\" onclick=\"window.location.href = '" + config.md_variables["DISCORD_WEBSITE_LINK"] + "';\" style=\"cursor: pointer;\">\
                 <div class=\"card-image\"><img alt=\"Image of a chad in front of a computer\" width=\"477\" height=\"308\" src=\"https://rpgpowerforge.com/media/home/card_community.jpg\"></img></div>\
                 <div class=\"card-text\"><h3>Community</h3><p>Join the dev team and users on Discord. We will listen to your feedback and try to improve our product in the right direction !</p></div>\
             </div>\
