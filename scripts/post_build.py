@@ -109,6 +109,7 @@ def nav(content):
 
     # open the nav for the current page 
     # convert the string to a xml structure
+    print(content)
     soup = BeautifulSoup(content, 'lxml')
 
     # iterate over the xml and add chevron (svg element)
