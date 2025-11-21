@@ -37,11 +37,13 @@ python3 ${ROOT}/scripts/pre_build.py
 # BUILD SCRIPTS
 echo " ======================= [ WEBSITE : BUILD ] ======================="
 # find all folders under ./src
-for folder in $(find src -type d); do
+for folder in $(find src -mindepth 1 -maxdepth 1 -type d); do
     # find all the book.toml files and execute the build
     if [ -f "${folder}/book.toml" ]; then
         # Replace "src" with "book"
         output_dir="${folder/src/book}"
+        echo "install mdbook plugin in : ${ROOT}/${folder}"
+        mdbook-admonish install ${ROOT}/${folder}
         echo "Building: ${ROOT}/${folder} -> ${ROOT}/${output_dir}"
         mdbook build "${ROOT}/${folder}" -d "${ROOT}/${output_dir}"
     fi
