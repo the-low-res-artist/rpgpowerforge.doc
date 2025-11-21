@@ -5,7 +5,9 @@ import re
 import sys 
 import os 
 import time
+import shutil
 from pathlib import Path
+from bs4 import BeautifulSoup
 
 from config import config
 
