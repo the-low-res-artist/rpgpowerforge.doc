@@ -71,7 +71,7 @@
     * [Dev Roadmap](./about/roadmap.md)
     * [Dev Features](./about/features.md)
     * [Presentation](./about/presentation.md)
-* [Support us !]()
+* Support us !
     * [Donation (Patreon)](https://www.patreon.com/c/rpgpowerforge/membership)
     * [Supporters Hall of Fame](./support/hall_of_fame.md)
 
