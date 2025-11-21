@@ -98,7 +98,7 @@ def custom_js(filepath, content):
 def nav(content):
 
     # get the chapters in the nav section
-    number_chapters = re.findall(NUMBER_CHAPTER_REGEX, s)
+    number_chapters = re.findall(NUMBER_CHAPTER_REGEX, content)
 
     # remove numbers in chapter title
     for number in number_chapters:
@@ -120,8 +120,8 @@ def nav(content):
             li_classes.remove('expanded')
             li['class'] = li_classes
         # Filter the list items based on the condition (next sibling is also <li> without class)
-        sigling_li = li.find_next_sibling('li')
-        if sigling_li and len(sigling_li.get('class', [])) == 0:
+        sibling_li = li.find_next_sibling('li')
+        if sibling_li and len(sibling_li.get('class', [])) == 0:
             # instanciate the svg each tiem to create a deep copy
             li.append(BeautifulSoup(string_svg, 'html.parser').svg)
 
@@ -138,11 +138,11 @@ def nav(content):
             if len(existing_classes) == 0:
                 # get above sibling => li which hold the chevron element (svg)
                 # force section open ("expanded" class to li)
-                sigling_li = parent_li.find_previous_sibling('li')
-                if sigling_li:
-                    sigling_li['class'].append('expanded')
+                sibling_li = parent_li.find_previous_sibling('li')
+                if sibling_li:
+                    sibling_li['class'].append('expanded')
                     # force chevron open
-                    chevron_svg = sigling_li.find('svg', recursive=False)
+                    chevron_svg = sibling_li.find('svg', recursive=False)
                     if chevron_svg:
                         chevron_svg['class'].append('nav-svg-rotate-90')
             # find next parent
