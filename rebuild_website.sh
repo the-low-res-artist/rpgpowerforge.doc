@@ -47,9 +47,17 @@ for folder in $(find src -type d); do
 done
 
 # ---------------------------------------------------------------
-# MAKE CSS and JS AVAILABLE
-cp -r ${ROOT}/custom-css ${ROOT}/book/custom-css
-cp -r ${ROOT}/custom-js ${ROOT}/book/custom-js
+# HERO PAGE
+cp ${ROOT}/resources/hero.html ${ROOT}/book/index.html
+# add links for home page to work (assuming we have /doc at least)
+#ln -s ${root_dir}/book/doc/css ${root_dir}/book/css
+#ln -s ${root_dir}/book/doc/FontAwesome ${root_dir}/book/FontAwesome
+#ln -s ${root_dir}/book/doc/fonts ${root_dir}/book/fonts
+
+# ---------------------------------------------------------------
+# MAKE RESOURCES AVAILABLE
+ln -s ${ROOT}/custom-css ${ROOT}/book/custom-css
+ln -s ${ROOT}/custom-js ${ROOT}/book/custom-js
 
 # ---------------------------------------------------------------
 # POST BUILD SCRIPTS
