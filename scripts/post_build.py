@@ -180,7 +180,7 @@ def main():
             # general settings
             content = custom_css(filepath, content)
             content = custom_js(filepath, content)
-            content = nav(filepath, content)
+            content = nav(content)
 
             # -----------------------------------------------------------------
             # name specific settings
