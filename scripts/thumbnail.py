@@ -48,8 +48,8 @@ def get_new_thumbnail_image(filename, title, file_template):
         subtitle = "User manual"
 
         # create 2 fonts
-        font_title = ImageFont.truetype("./../font/mont.otf", 110)
-        font_subtitle = ImageFont.truetype("./../font/mont.otf", 50)
+        font_title = ImageFont.truetype("./../resources/mont.otf", 110)
+        font_subtitle = ImageFont.truetype("./../resources/mont.otf", 50)
         front_color = (255, 255, 255, 255)
         back_color = (0, 0, 0, 255)
 

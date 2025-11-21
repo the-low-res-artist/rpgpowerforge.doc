@@ -9,10 +9,11 @@
 
 # ---------------------------------------------------------------
 # variables declaration
-ROOT=${PWD}
+ROOT=/home/www-data/rpgpowerforge
 
 # ---------------------------------------------------------------
 # virtual env creation
+cd ${ROOT}
 python3 -m venv venv
 source venv/bin/activate
 
@@ -57,7 +58,8 @@ cp ${ROOT}/resources/hero.html ${ROOT}/book/index.html
 # ---------------------------------------------------------------
 # MAKE RESOURCES AVAILABLE
 ln -s ${ROOT}/custom-css ${ROOT}/book/custom-css
-ln -s ${ROOT}/custom-js ${ROOT}/book/custom-js
+ln -s ${ROOT}/custom-js  ${ROOT}/book/custom-js
+ln -s ${ROOT}/media      ${ROOT}/book/media
 
 # ---------------------------------------------------------------
 # POST BUILD SCRIPTS
