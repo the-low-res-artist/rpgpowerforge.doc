@@ -42,9 +42,7 @@ for folder in $(find src -mindepth 1 -maxdepth 1 -type d); do
     if [ -f "${folder}/book.toml" ]; then
         # Replace "src" with "book"
         output_dir="${folder/src/book}"
-        echo "install mdbook plugin in : ${ROOT}/${folder}"
-        mdbook-admonish install ${ROOT}/${folder}
-        echo "Building: ${ROOT}/${folder} -> ${ROOT}/${output_dir}"
+        echo "mdbook build "${ROOT}/${folder}" -d "${ROOT}/${output_dir}""
         mdbook build "${ROOT}/${folder}" -d "${ROOT}/${output_dir}"
     fi
 done
@@ -52,10 +50,6 @@ done
 # ---------------------------------------------------------------
 # HERO PAGE
 cp ${ROOT}/resources/hero.html ${ROOT}/book/index.html
-# add links for home page to work (assuming we have /doc at least)
-#ln -s ${root_dir}/book/doc/css ${root_dir}/book/css
-#ln -s ${root_dir}/book/doc/FontAwesome ${root_dir}/book/FontAwesome
-#ln -s ${root_dir}/book/doc/fonts ${root_dir}/book/fonts
 
 # ---------------------------------------------------------------
 # MAKE RESOURCES AVAILABLE

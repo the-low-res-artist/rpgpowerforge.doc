@@ -72,11 +72,12 @@ def main():
         
         # -----------------------------------------------------------------
         # iterate all files, find html files
+        file_count = 0
         for filepath in Path(BOOK_ROOT).rglob("*.html"):
                     
             # -----------------------------------------------------------------
-            # md file !
-            print(filepath)
+            # html file !
+            file_count += 1
             content = ""
             with open(filepath, 'r', encoding="utf8") as f:
                 content = f.read()
@@ -130,7 +131,7 @@ def main():
     finally:
         # duration & exit
         end = time.time()
-        print(f"Script duration : {str(round(end - start, 1))} sec")
+        print(f"{file_count} files updated in {str(round(end - start, 1))} sec")
         return 0
 
 # =========================================================

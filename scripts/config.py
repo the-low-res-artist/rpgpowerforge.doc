@@ -10,7 +10,7 @@ class config:
     # =============================================================================
     # =============================================================================
     # website path
-    website_root = "http://72.61.8.76"
+    website_root = "https://rpgpowerforge.com"
 
     # =============================================================================
     # =============================================================================
@@ -24,7 +24,6 @@ class config:
         "TRELLO_WEBSITE_LINK": "https://trello.com/b/PIzgsYov/road-map",
         "TWITTER_WEBSITE_LINK": "https://twitter.com/RPGPowerForge",
         "DISCORD_WEBSITE_LINK": "https://onesquareminesweeper.com/",
-        "TRELLO_WEBSITE_LINK": "https://trello.com/b/PIzgsYov/road-map",
         "YOUTUBE_WEBSITE_LINK": "https://www.youtube.com/@rpgpowerforge",
         "PATREON_WEBSITE_LINK": "https://www.patreon.com/rpgpowerforge/membership"
     }
