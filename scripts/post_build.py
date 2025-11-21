@@ -242,6 +242,141 @@ def devteam(content):
 
 
 # =========================================================
+# let's make a game page
+def lets_make_a_game(content):
+
+    # prepare funny tags
+    tags_2d = ""
+    for tag in config.tags_2d:
+        tags_2d += f"<div class=\"tag\" style=\"background-color:ForestGreen\">{tag}</div>"
+    tags_2d = f"<div class=\"tags_container\">{tags_2d}</div>"
+
+    tags_3d = ""
+    for tag in config.tags_3d:
+        tags_3d += f"<div class=\"tag\" style=\"background-color:Chocolate\">{tag}</div>"
+    tags_3d = f"<div class=\"tags_container\">{tags_3d}</div>"
+
+    tags_4d = ""
+    for tag in config.tags_4d:
+        tags_4d += f"<div class=\"tag\" style=\"background-color:Crimson\">{tag}</div>"
+    tags_4d = f"<div class=\"tags_container\">{tags_4d}</div>"
+
+    # setup cards
+    str_to_replace = "CARDS_GO_HERE"
+    str_replacement = f"<div class=\"cards\">\
+            <div class=\"card card1\" onclick=\"window.location.href = 'https://cursoreffects.com/';\" style=\"cursor: pointer;\">\
+                <div class=\"card-image\"><img src=\"https://rpgpowerforge.com/media/lets_make_a_game/card_2d.png\"></img></div>\
+                <div class=\"card-text\"><h3>{config.title_2d}</h3>{tags_2d}<p>{config.description_2d}</p></div>\
+            </div>\
+            <div class=\"card card2\" onclick=\"window.location.href = 'https://jacksonpollock.org/';\" style=\"cursor: pointer;\">\
+                <div class=\"card-image\"><img src=\"https://rpgpowerforge.com/media/lets_make_a_game/card_3d.png\"></img></div>\
+                <div class=\"card-text\"><h3>{config.title_3d}</h3>{tags_3d}<p>{config.description_3d}</p></div>\
+            </div>\
+            <div class=\"card card3\" onclick=\"window.location.href = 'https://burymewithmymoney.com/';\" style=\"cursor: pointer;\">\
+                <div class=\"card-image\"><img src=\"https://rpgpowerforge.com/media/lets_make_a_game/card_4d.png\"></img></div>\
+                <div class=\"card-text\"><h3>{config.title_4d}</h3>{tags_4d}<p>{config.description_4d}</p></div>\
+            </div>\
+        </div>"
+
+    return content.replace(str_to_replace, str_replacement)
+
+
+# =========================================================
+# set installation page
+def installation(content):
+
+    # prepare funny tags
+    tags_install_unity = ""
+    for tag in config.tags_install_unity:
+        tags_install_unity += f"<div class=\"tag\" style=\"background-color:SlateBlue\">{tag}</div>"
+    tags_install_unity = f"<div class=\"tags_container\">{tags_install_unity}</div>"
+
+    tags_dl_rpgpowerforge = ""
+    for tag in config.tags_dl_rpgpowerforge:
+        tags_dl_rpgpowerforge += f"<div class=\"tag\" style=\"background-color:RoyalBlue\">{tag}</div>"
+    tags_dl_rpgpowerforge = f"<div class=\"tags_container\">{tags_dl_rpgpowerforge}</div>"
+
+    tags_create_project = ""
+    for tag in config.tags_create_project:
+        tags_create_project += f"<div class=\"tag\" style=\"background-color:DodgerBlue\">{tag}</div>"
+    tags_create_project = f"<div class=\"tags_container\">{tags_create_project}</div>"
+
+    # setup cards
+    str_to_replace = "CARDS_GO_HERE"
+    str_replacement = f"<div class=\"cards\">\
+            <div class=\"card card1\" onclick=\"window.location.href = 'https://rpgpowerforge.com/doc/installation/installation_unity.html';\" style=\"cursor: pointer;\">\
+                <div class=\"card-image\"><img src=\"https://rpgpowerforge.com/media/installation/card_unity.png\"></img></div>\
+                <div class=\"card-text\"><h3>{config.title_install_unity}</h3>{tags_install_unity}<p>{config.description_install_unity}</p></div>\
+            </div>\
+            <div class=\"card card2\" onclick=\"window.location.href = 'https://rpgpowerforge.com/doc/installation/download_rpg_power_forge.html';\" style=\"cursor: pointer;\">\
+                <div class=\"card-image\"><img src=\"https://rpgpowerforge.com/media/installation/card_rpf.png\"></img></div>\
+                <div class=\"card-text\"><h3>{config.title_dl_rpgpowerforge}</h3>{tags_dl_rpgpowerforge}<p>{config.description_dl_rpgpowerforge}</p></div>\
+            </div>\
+            <div class=\"card card3\" onclick=\"window.location.href = 'https://rpgpowerforge.com/doc/installation/create_new_project.html';\" style=\"cursor: pointer;\">\
+                <div class=\"card-image\"><img src=\"https://rpgpowerforge.com/media/installation/card_new_project.png\"></img></div>\
+                <div class=\"card-text\"><h3>{config.title_create_project}</h3>{tags_create_project}<p>{config.description_create_project}</p></div>\
+            </div>\
+        </div>"
+
+    return content.replace(str_to_replace, str_replacement)
+
+
+# =========================================================
+# set footer section
+def footer(content):
+
+    links=[
+        {
+            "href":config.md_variables["PATREON_WEBSITE_LINK"],
+            "img":"footer/patreon.png",
+            "alt":"Patreon link"
+        },
+        {
+            "href":config.md_variables["TWITTER_WEBSITE_LINK"],
+            "img":"footer/x.png",
+            "alt":"X/Twitter link"
+        },
+        {
+            "href":config.md_variables["YOUTUBE_WEBSITE_LINK"],
+            "img":"footer/youtube.png",
+            "alt":"Youtube link"
+        },
+    ]
+
+    list_links = []
+    for link in links:
+        l = f"<div class=\"footer-link\">\
+          <a href=\"" + link["href"] + "\" target=\"_blank\"><img src=\"https://rpgpowerforge.com/media/" + link["img"] + "\" alt=\"" + link["alt"] + "\" /></a>\
+        </div>"
+        list_links.append(l)
+    html_links = ' '.join(list_links)
+
+    footer=f"<p>{html_links}</p>\
+    <p>Copyright © {datetime.now().year} - {datetime.now().year + 1} RPG Power Forge<br>\
+    \"RPG Power Forge\" is a trademark.<br>\
+    Other names or brands are trademarks of their respective owners.</p>\
+    <p>Last update : {datetime.now().strftime(f'%A %d %B %Y')}</p>"
+
+    str_to_replace="</main>"
+    str_replacement=f"</main><div class=\"footer-container\"><div class=\"footer-text\">{footer}</div></div>"
+
+    return content.replace(str_to_replace, str_replacement)
+
+
+# =========================================================
+# join community button header
+def join_community(content):
+
+    svg = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 0 512 512\" width=\"20\" height=\"20\"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill=\"#ffffff\" d=\"M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z\"/></svg>"
+
+    # update the top bar section
+    str_to_replace = "RPG Power Forge</a></h1>"
+    str_replacement = f"RPG Power Forge</h1><div class=\"join-community-container\"><div class=\"join-community-text\"><a href=\"" + config.md_variables["PATREON_WEBSITE_LINK"] + "\" target=\"_blank\">{svg}&nbsp;&nbsp;&nbsp;Get Early Access&nbsp;&nbsp;&nbsp;{svg}</a></div></div>"
+    
+    return content.replace(str_to_replace, str_replacement) 
+
+
+# =========================================================
 # entry point
 def main():
     
@@ -271,11 +406,14 @@ def main():
             content = custom_js(filepath, content)
             content = nav(content)
             content = title_icon(content)
-            content = home(content)
+            content = footer(content)
 
             # -----------------------------------------------------------------
             # name specific settings
-            #if (filepath.name == "xxx.html"): content = yyy(content)
+            if (filepath.name == "home.html" or filepath.name == "index.html"): content = home(content)
+            if (filepath.name == "devteam.html"): content = devteam(content)
+            if (filepath.name == "lets_make_a_game.html"): content = lets_make_a_game(content)
+            if (filepath.name == "installation.html"): content = installation(content)
 
             # -----------------------------------------------------------------                    
             # Save the updated content
@@ -286,16 +424,6 @@ def main():
             #python3 -m link.py  || true # must be after rating to prevent the top title to have a subtitle "user find this page useful !"
             # update the roadmap page
             #python3 -m roadmap.py || true
-            # update lets make a game page
-            #python3 -m lets_make_a_game.py || true
-            # update installation page
-            #python3 -m installation.py || true
-            # update rpg power forge overview page
-            #python3 -m overview.py || true
-            # update the footer part
-            #python3 -m footer.py || true
-            # update community join button
-            #python3 -m join-community.py || true
             # update devlog embedded videos
             #python3 -m devlogs.py || true
             # update features progress
