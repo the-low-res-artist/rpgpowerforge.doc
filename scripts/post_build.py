@@ -76,7 +76,7 @@ def custom_js(filepath, content):
 
         # add if in common list
         if js_filepath.name in config.js_common_list:
-            js_links.append(f"<script href=\"{js_webpath}\" type=\"text/javascript\" charset=\"utf-8\"></script>")
+            js_links.append(f"<script src=\"{js_webpath}\" type=\"text/javascript\" charset=\"utf-8\"></script>")
 
         # also add if the css file has the same name as the current html file
         else:
