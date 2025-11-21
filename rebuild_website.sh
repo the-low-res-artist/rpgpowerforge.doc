@@ -42,10 +42,10 @@ for folder in $(find src -mindepth 1 -maxdepth 1 -type d); do
     if [ -f "${folder}/book.toml" ]; then
         # Replace "src" with "book"
         output_dir="${folder/src/book}"
-        echo "install mdbook plugin in : ${ROOT}/${folder}"
-        mdbook-admonish install ${ROOT}/${folder}
-        echo "Building: ${ROOT}/${folder} -> ${ROOT}/${output_dir}"
-        mdbook build "${ROOT}/${folder}" -d "${ROOT}/${output_dir}"
+        echo "mdbook-admonish install ${folder}"
+        mdbook-admonish install ${folder}
+        echo "Building: ${folder} -> ${output_dir}"
+        mdbook build "${folder}" -d "${output_dir}"
     fi
 done
 
