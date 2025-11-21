@@ -109,6 +109,11 @@ def nav(content):
         str_to_replace = number[0] # first element of the regex tuple
         content = content.replace(str_to_replace, "")
 
+    # Patreon nav link
+    str_to_replace = "<div> link_patreon</div>"
+    str_replacement = f"<a href=\"" + config.md_variables["PATREON_WEBSITE_LINK"] + "\" target=\"_blank\"> Donation (Patreon)</a>"
+    content = content.replace(str_to_replace, str_replacement)
+
     # open the nav for the current page 
     # convert the string to a xml structure
     soup = BeautifulSoup(content, 'lxml')
