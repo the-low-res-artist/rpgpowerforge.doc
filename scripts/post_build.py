@@ -109,14 +109,13 @@ def nav(content):
 
     # open the nav for the current page 
     # convert the string to a xml structure
-    print(content)
     soup = BeautifulSoup(content, 'lxml')
 
     # iterate over the xml and add chevron (svg element)
     string_svg = '<svg class="icon nav-svg-rotate-0" viewBox="0 0 512 512" width="20px" height="20px"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" fill="currentColor"></path></svg>'
 
     # no nav ? skip
-    if (soup.find('nav') == None)
+    if (soup.find('nav') == None):
         return content
 
     all_li = soup.find('nav').find_all('li')
