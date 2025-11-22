@@ -117,7 +117,7 @@ def hall_of_fame(content):
         for sup in supporters_sorted[10:]:
             list_replacement.append(sup["name"])
 
-        str_replacement = ", ".join(list_replacement)
+        str_replacement = ", ".join(list_replacement[:-1]) + " and " + list_replacement[-1]
         content = content.replace(str_to_replace, str_replacement)
 
     return content
