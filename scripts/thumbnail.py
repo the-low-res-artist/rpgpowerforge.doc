@@ -1,17 +1,31 @@
-import re # regex operations
-import sys # to return 0
-import os # loop over files
-import shutil # move files
+
+# =========================================================
+# import section
+import re 
+import sys 
+import os 
+import time
+import shutil
+import random
 from PIL import ImageFont, ImageDraw, Image
-import time # measure duration
+from datetime import datetime
+from pathlib import Path
 
-# goal : add a nice thumbnail to html output pages
+from config import config
 
+
+# =========================================================
+# constant values
+BOOK_ROOT = "/home/www-data/rpgpowerforge/book"
+
+
+# =========================================================
 # slip evenly a sentence string (for title)
 def split_string_equally(input_string):
     total_chars = len(input_string)
     half_chars = total_chars // 2
 
+    # ------------------------------------------------------------
     # Find the closest space to half_chars
     offset = 0
     index = 0
@@ -34,10 +48,13 @@ def split_string_equally(input_string):
 
     return first_half, second_half
 
+
+# =========================================================
 # add a cool title to the thumbnail
-def get_new_thumbnail_image(filename, title, file_template):
-    basename = os.path.basename(filename)
+def get_new_thumbnail_image(filepath, title, file_template):
+    basename = os.path.basename(filepath)
     
+    # ------------------------------------------------------------
     # open template image
     with Image.open(file_template) as image:
 
@@ -48,11 +65,12 @@ def get_new_thumbnail_image(filename, title, file_template):
         subtitle = "User manual"
 
         # create 2 fonts
-        font_title = ImageFont.truetype("./../resources/mont.otf", 110)
-        font_subtitle = ImageFont.truetype("./../resources/mont.otf", 50)
+        font_title = ImageFont.truetype(f"{BOOK_ROOT}/resources/mont.otf", 110)
+        font_subtitle = ImageFont.truetype(f"{BOOK_ROOT}/resources/mont.otf", 50)
         front_color = (255, 255, 255, 255)
         back_color = (0, 0, 0, 255)
 
+        # ------------------------------------------------------------
         # case if short title
         if (len(title) <= 12) or (not ' ' in title):
             # title
@@ -66,6 +84,8 @@ def get_new_thumbnail_image(filename, title, file_template):
                 for y in range(-4, 5, 2):
                     draw.text((23+x, 500+y), subtitle, font=font_subtitle, fill=back_color)
             draw.text((23, 500), subtitle, font=font_subtitle, fill=front_color)
+        
+        # ------------------------------------------------------------
         # case long titles
         else:
             title_row1, title_row2 = split_string_equally(title)
@@ -77,25 +97,30 @@ def get_new_thumbnail_image(filename, title, file_template):
             draw.text((20, 350), title_row1, font=font_title, fill=front_color)
             draw.text((20, 450), title_row2, font=font_title, fill=front_color)
             
+        # ------------------------------------------------------------
         # save
         output_filename = str(hash(title))
-        thumbnail_path = f"./../media/thumbnail/thumbnail_{output_filename}.jpg"
+        thumbnail_path = f"{BOOK_ROOT}/media/thumbnail/thumbnail_{output_filename}.jpg"
         image.save(thumbnail_path)
 
-    return thumbnail_path.replace("./../", "https://rpgpowerforge.com/")
+    return thumbnail_path.replace(BOOK_ROOT, config.website_root)
 
+
+# =========================================================
 # replace in a file
-def set_thumbnail(filename):
+def set_thumbnail(filepath):
 
-    # Safely read the input filename using 'with'
+    # ------------------------------------------------------------
+    # Safely read the input file using 'with'
     s= ""
-    with open(filename, 'r', encoding="utf8") as f:
+    with open(filepath, 'r', encoding="utf8") as f:
         s = f.read()
 
     # safe exit
     if (s == ""):
         return
 
+    # ------------------------------------------------------------
     # get file title
     titles = re.findall("<h1.+?><a.+?>(.+?)</a>", s)
     if len(titles) > 0:
@@ -103,9 +128,9 @@ def set_thumbnail(filename):
     else:
         title = "Documentation"
 
-    file_url=filename.replace('./../book/', 'https://rpgpowerforge.com/')
+    file_url = filepath.replace(BOOK_ROOT, config.website_root)
     description="The awesome documentation for the Unity package : RPG Power Forge"
-    image= get_new_thumbnail_image(filename, title, "./../media/thumbnail/thumbnail_template.png")
+    image= get_new_thumbnail_image(filepath, title, f"{BOOK_ROOT}/media/thumbnail/thumbnail_v3.jpg")
     title="RPG Power Forge documentation site"
     author="@rpgpowerforge"
     site="rpgpowerforge.com"
@@ -143,22 +168,27 @@ def set_thumbnail(filename):
     str_replacement = f"{thumbnail}</head>"
     s = s.replace(str_to_replace, str_replacement)
 
+    # ------------------------------------------------------------
     # Safely write the changed content
-    with open(filename, 'w', encoding="utf8") as f:
+    with open(filepath, 'w', encoding="utf8") as f:
         f.write(s)
 
+# =========================================================
 # entry point
-start = time.time()
-book_root = "./../book/"
-nb_files=0
-for root, dirs, files in os.walk(book_root, topdown=False):
-   for filename in files:
-        if filename.endswith(".html"):
-            set_thumbnail(os.path.join(root, filename))
-            nb_files+=1
+if __name__ == "__main__":
+    
+    start = time.time()
 
-end = time.time()
-print(f"[{str(round(end - start, 1))} sec] THUMBNAILS UPDATE : {nb_files} updated")
+    # ------------------------------------------------------------
+    # iterate all files, find html files
+    file_count = 0
+    for filepath in Path(BOOK_ROOT).rglob("*.html"):
+        set_thumbnail(filepath)
+        file_count+=1
+        sys.exit(0)
 
-# safe return
-sys.exit(0)
+    end = time.time()
+    print(f"{file_count} thumbnails created in {str(round(end - start, 1))} sec")
+
+    # safe return
+    sys.exit(0)

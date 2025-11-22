@@ -2,4 +2,4 @@ book
 rate
 scripts/__pycache__
 scripts/quarantaine
-**/sandbox
+src/doc/sandbox/

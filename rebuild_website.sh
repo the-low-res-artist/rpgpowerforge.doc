@@ -57,6 +57,7 @@ ln -s ${ROOT}/custom-font ${ROOT}/book/custom-font
 ln -s ${ROOT}/custom-css  ${ROOT}/book/custom-css
 ln -s ${ROOT}/custom-js   ${ROOT}/book/custom-js
 ln -s ${ROOT}/media       ${ROOT}/book/media
+ln -s ${ROOT}/resources   ${ROOT}/book/resources
 
 # ---------------------------------------------------------------
 # POST BUILD SCRIPTS
