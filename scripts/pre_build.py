@@ -27,7 +27,7 @@ def hall_of_fame(content):
     # compute special thanks
     str_to_replace = "SPECIAL_THANKS_LIST_GOES_HERE"
     list_replacement = []
-    for sup in config.special_supporters:
+    for sup in config.special_thanks:
         name = sup["name"]
         link = sup["link"]
         comment = sup["comment"]
