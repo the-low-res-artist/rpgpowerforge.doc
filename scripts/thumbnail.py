@@ -57,6 +57,7 @@ def draw_text_in_box(draw, box, text, font_path, max_font_size, fill):
     # Try decreasing font sizes until the text fits
     font_size = max_font_size
     while font_size > 5:
+        print(font_size)
         font = ImageFont.truetype(font_path, font_size)
 
         # Word-wrapping: split into lines that fit width
@@ -86,7 +87,7 @@ def draw_text_in_box(draw, box, text, font_path, max_font_size, fill):
     for line in lines:
         line_width = draw.textbbox((0,0), line, font=font)[2]
         cx = x
-        draw.text((cx, cy), line, font=font, fill=fill)
+        draw.text((cx, cy), line, font=font, fill=fill, stroke_width = 10, stroke_fill="black")
         cy += line_height
 
 # =========================================================
