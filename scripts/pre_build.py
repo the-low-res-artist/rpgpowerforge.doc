@@ -5,6 +5,8 @@ import re
 import sys 
 import os 
 import time
+import json
+import requests
 from pathlib import Path
 
 from config import config
@@ -13,29 +15,105 @@ from config import config
 # =========================================================
 # constant values
 SRC_ROOT = "/home/www-data/rpgpowerforge/src/"
-
+PATREON_API_BASE_URL = "https://www.patreon.com/api/oauth2/v2"
+PATREON_CAMPAIGN_ID = "12005895"
+ACCESS_TOKEN = "_YNczPWoKiY4-tXsfexmqACPX7iTSBjPX8Uwa2eH1Kk"
 
 # =========================================================
 # set the hall of fame
 def hall_of_fame(content):
 
-    # init
-    str_to_replace = "SUPPORTER_LIST_GOES_HERE"
+    # -------------------------------------------------------------
+    # compute special thanks
+    str_to_replace = "SPECIAL_THANKS_LIST_GOES_HERE"
     list_replacement = []
-    supporters = sorted(config.supporters, key=lambda d: d['name'])
-
-    # compute hall of fame
-    for sup in supporters:
+    for sup in config.special_supporters:
         name = sup["name"]
-        sub_str = f"* **{name}**"
-        if "link" in sup:
-            link = sup["link"]
-            link_text = link.replace("http://", "").replace("https://", "")
-            sub_str = f"{sub_str} : [{link_text}]({link})"
-        list_replacement.append(sub_str)
+        link = sup["link"]
+        comment = sup["comment"]
+        list_replacement.append(f"* **{name}** ([{link}](https://{link})), {comment}")
 
     str_replacement = "\n".join(list_replacement)
-    return content.replace(str_to_replace, str_replacement)
+    content = content.replace(str_to_replace, str_replacement)
+
+    # -------------------------------------------------------------
+    # contact Patreon
+    include = "pledge_history&fields%5Bmember%5D=full_name"
+    token = os.getenv("PATREON_ACCESS_TOKEN_ALL_OF_FAME")
+    url = f"{PATREON_API_BASE_URL}/campaigns/{PATREON_CAMPAIGN_ID}/members?include={include}"
+    headers = { "Authorization": f"Bearer {ACCESS_TOKEN}" }
+
+    response = requests.get(url, headers=headers)
+
+    # -------------------------------------------------------------
+    # success ? great
+    if (response.status_code == 200):
+        
+        # compute json data
+        data = json.loads(response.text)
+        members = data["data"]
+        events = data["included"]
+        event_map = {e["id"]: e["attributes"] for e in events}
+        supporters = []
+
+        for m in members:
+            name = m["attributes"]["full_name"]
+
+            event_list = m["relationships"]["pledge_history"]["data"]
+            total_cents = 0
+            payments = []
+
+            for e in event_list:
+                event_id = e["id"]
+                if event_id not in event_map:
+                    continue
+
+                ev = event_map[event_id]
+
+                # Keep only truly paid events
+                if ev.get("payment_status") == "Paid":
+                    payments.append(ev)
+
+            # Sum total paid
+            for ev in payments:
+                amount = ev["amount_cents"]
+                currency = ev["currency_code"]
+                total_cents += amount
+
+            if total_cents > 0:
+                supporters.append({
+                    "name": name,
+                    "total_cents": total_cents,
+                    "total_usd": total_cents / 100.0
+                })
+
+        supporters_sorted = sorted(supporters, key=lambda x: x["total_cents"], reverse=True)
+        for s in supporters_sorted:
+            print(f"{s['name']:<25}  ${s['total_usd']:.2f}")
+
+        # -------------------------------------------------------------
+        # compute top supporters
+        str_to_replace = "TOP_SUPPORTERS_LIST_GOES_HERE"
+        list_replacement = []
+        for sup in supporters_sorted[:10]:
+            name = sup["name"]
+            sub_str = f"* **{name}*"
+            list_replacement.append(sub_str)
+
+        str_replacement = "\n".join(list_replacement)
+        content = content.replace(str_to_replace, str_replacement)
+
+        # -------------------------------------------------------------
+        # compute supporters
+        str_to_replace = "SPECIAL_THANKS_LIST_GOES_HERE"
+        list_replacement = []
+        for sup in supporters_sorted[:10]:
+            list_replacement.append(sup["name"])
+
+        str_replacement = ", ".join(list_replacement)
+        content = content.replace(str_to_replace, str_replacement)
+
+    return content
 
 
 # =========================================================

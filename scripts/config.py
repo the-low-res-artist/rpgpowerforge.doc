@@ -153,15 +153,11 @@ class config:
 
     # =============================================================================
     # =============================================================================
-    # awesome supporters
-    supporters = [
-        {"name":"YouFulca","link":"https://x.com/YouFulca"},
-        {"name":"Kashdan Music","link":"https://x.com/KashdanMusic"},
-        {"name":"Sunny Valley Studio","link":"https://x.com/SunnyVStudio"},
-        {"name":"Zaebucca","link":"https://x.com/zaebucca"},
-        {"name":"OneLonelyDev"},
-        {"name":"Jefferson Wolfe"},
-        {"name":"Danny Nanni"},
-        {"name":"Team Abarth"}
+    # awesome supporters (participate in the project actively)
+    special_thanks = [
+        {"name":"🎸 YouFulca","link":"x.com/YouFulca", "comment": "for delivering the best battle music themes."},
+        {"name":"🎵 Kashdan Music","link":"x.com/KashdanMusic", "comment": "for making most of our music and SFX."},
+        {"name":"🖥️ Sunny Valley Studio","link":"x.com/SunnyVStudio", "comment": "for helping us during the dev."},
+        {"name":"🎨 Zaebucca","link":"x.com/zaebucca", "comment": "for sharing his awesome game assets with this project."}
     ]   
         
