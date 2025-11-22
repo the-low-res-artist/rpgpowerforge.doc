@@ -48,6 +48,46 @@ def split_string_equally(input_string):
 
     return first_half, second_half
 
+# =========================================================
+# helper to raw text in a bounding box
+def draw_text_in_box(draw, box, text, font_path, max_font_size, fill):
+
+    x, y, w, h = box
+
+    # Try decreasing font sizes until the text fits
+    font_size = max_font_size
+    while font_size > 5:
+        font = ImageFont.truetype(font_path, font_size)
+
+        # Word-wrapping: split into lines that fit width
+        lines = []
+        current = ""
+        for word in text.split():
+            test_line = current + " " + word if current else word
+            if draw.textbbox((0,0), test_line, font=font)[2] <= w:
+                current = test_line
+            else:
+                lines.append(current)
+                current = word
+        if current:
+            lines.append(current)
+
+        # Measure height
+        line_height = draw.textbbox((0,0), "Ay", font=font)[3]
+        total_height = line_height * len(lines)
+
+        if total_height <= h:
+            break  # it fits
+
+        font_size -= 1  # shrink and try again
+
+    # Draw each line
+    cy = y
+    for line in lines:
+        line_width = draw.textbbox((0,0), line, font=font)[2]
+        cx = x
+        draw.text((cx, cy), line, font=font, fill=fill)
+        cy += line_height
 
 # =========================================================
 # add a cool title to the thumbnail
@@ -61,46 +101,14 @@ def get_new_thumbnail_image(filepath, title, file_template):
         # get the image
         draw = ImageDraw.Draw(image)
 
-        # text to draw
-        subtitle = "Documentation"
+        # font settings
+        font_box = (x, y, width, height)
+        font_text = title
+        font_path = f"{BOOK_ROOT}/resources/mont.otf"
+        font_color = (255, 255, 255, 255)
+        font_max_size = 100
 
-        print("============================")
-        print(filepath)
-        print(title)
-        print(subtitle)
-
-        # create 2 fonts
-        font_title = ImageFont.truetype(f"{BOOK_ROOT}/resources/mont.otf", 110)
-        font_subtitle = ImageFont.truetype(f"{BOOK_ROOT}/resources/mont.otf", 50)
-        front_color = (255, 255, 255, 255)
-        back_color = (0, 0, 0, 255)
-
-        # ------------------------------------------------------------
-        # case if short title
-        if (len(title) <= 12) or (not ' ' in title):
-            # title
-            for x in range(-4,5,2):
-                for y in range(-4, 5, 2):
-                    draw.text((20+x, 400+y), title, font=font_title, fill=back_color)
-            draw.text((20, 400), title, font=font_title, fill=front_color)
-
-            # subtitle
-            for x in range(-4,5,2):
-                for y in range(-4, 5, 2):
-                    draw.text((23+x, 500+y), subtitle, font=font_subtitle, fill=back_color)
-            draw.text((23, 500), subtitle, font=font_subtitle, fill=front_color)
-        
-        # ------------------------------------------------------------
-        # case long titles
-        else:
-            title_row1, title_row2 = split_string_equally(title)
-            # title row 1
-            for x in range(-4,5,2):
-                for y in range(-4, 5, 2):
-                    draw.text((20+x, 350+y), title_row1, font=font_title, fill=back_color)
-                    draw.text((20+x, 450+y), title_row2, font=font_title, fill=back_color)
-            draw.text((20, 350), title_row1, font=font_title, fill=front_color)
-            draw.text((20, 450), title_row2, font=font_title, fill=front_color)
+        draw_text_in_box(draw, font_box, font_text, font_path, font_max_size, font_color)
             
         # ------------------------------------------------------------
         # save
