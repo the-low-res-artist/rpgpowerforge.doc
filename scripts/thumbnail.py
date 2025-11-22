@@ -87,7 +87,7 @@ def draw_text_in_box(draw, box, text, font_path, max_font_size, fill):
     for line in lines:
         line_width = draw.textbbox((0,0), line, font=font)[2]
         cx = x
-        draw.text((cx, cy), line, font=font, fill=fill, stroke_width = 10, stroke_fill="black")
+        draw.text((cx, cy), line, font=font, fill=fill, stroke_width = 5, stroke_fill="black")
         cy += line_height
 
 # =========================================================
