@@ -31,32 +31,43 @@ def hall_of_fame(content):
         name = sup["name"]
         link = sup["link"]
         comment = sup["comment"]
-        list_replacement.append(f"* **{name}** ([{link}](https://{link})), {comment}")
+        list_replacement.append(f"* **{name}**, {comment}\n    * contact : [{link}](https://{link})")
 
     str_replacement = "\n".join(list_replacement)
     content = content.replace(str_to_replace, str_replacement)
 
     # -------------------------------------------------------------
-    # contact Patreon
+    # contact Patreon 
     include = "pledge_history&fields%5Bmember%5D=full_name"
     token = os.getenv("PATREON_ACCESS_TOKEN_ALL_OF_FAME")
     url = f"{PATREON_API_BASE_URL}/campaigns/{PATREON_CAMPAIGN_ID}/members?include={include}"
     headers = { "Authorization": f"Bearer {ACCESS_TOKEN}" }
 
-    response = requests.get(url, headers=headers)
+    all_members = []
+    all_events = []
+
+    # results are received by page
+    while url:
+        print("Fetching:", url)
+        resp = requests.get(url, headers=headers)
+        data = resp.json()
+
+        # Merge data
+        all_members.extend(data.get("data", []))
+        all_events.extend(data.get("included", []))
+
+        # Check for next page
+        url = data.get("links", {}).get("next")
 
     # -------------------------------------------------------------
     # success ? great
-    if (response.status_code == 200):
+    if (len(all_members) > 0 and len(all_events) > 0):
         
         # compute json data
-        data = json.loads(response.text)
-        members = data["data"]
-        events = data["included"]
-        event_map = {e["id"]: e["attributes"] for e in events}
+        event_map = {e["id"]: e["attributes"] for e in all_events}
         supporters = []
 
-        for m in members:
+        for m in all_members:
             name = m["attributes"]["full_name"]
 
             event_list = m["relationships"]["pledge_history"]["data"]
@@ -97,7 +108,7 @@ def hall_of_fame(content):
         list_replacement = []
         for sup in supporters_sorted[:10]:
             name = sup["name"]
-            sub_str = f"* **{name}*"
+            sub_str = f"* **{name}**"
             list_replacement.append(sub_str)
 
         str_replacement = "\n".join(list_replacement)
