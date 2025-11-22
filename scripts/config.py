@@ -158,7 +158,7 @@ class config:
         {"name":"🎸 YouFulca","link":"x.com/YouFulca", "comment": "for delivering the best battle music themes."},
         {"name":"🎵 Kashdan Music","link":"x.com/KashdanMusic", "comment": "for making most of our music and SFX."},
         {"name":"🖥️ Sunny Valley Studio","link":"x.com/SunnyVStudio", "comment": "for helping us during the dev."},
-        {"name":"🎨 Zaebucca","link":"x.com/zaebucca", "comment": "for sharing his awesome game assets with this project."}
+        {"name":"🎨 Zaebucca","link":"x.com/zaebucca", "comment": "for sharing his awesome game assets with this project."},
         {"name":"👩🏻‍💻 Christina","link":"www.vennegerts.com/en/", "comment": "for helping us design the UI and UX."}
     ]   
         
