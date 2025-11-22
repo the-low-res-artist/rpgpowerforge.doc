@@ -176,12 +176,12 @@ def set_thumbnail(filepath):
 
     str_to_replace = "</head>"
     str_replacement = f"{thumbnail}</head>"
-    s = s.replace(str_to_replace, str_replacement)
+    content = content.replace(str_to_replace, str_replacement)
 
     # ------------------------------------------------------------
     # Safely write the changed content
     with open(filepath, 'w', encoding="utf8") as f:
-        f.write(s)
+        f.write(content)
 
 # =========================================================
 # entry point
