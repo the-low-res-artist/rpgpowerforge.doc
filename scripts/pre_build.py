@@ -104,7 +104,7 @@ def hall_of_fame(content):
         str_to_replace = "TOP_SUPPORTERS_LIST_GOES_HERE"
         list_replacement = []
         for sup in supporters_sorted[:10]:
-            name = sup["name"]
+            name = sup["name"].rstrip(" ").lstrip(" ")
             list_replacement.append(f"* **{name}**")
 
         str_replacement = "\n".join(list_replacement)
