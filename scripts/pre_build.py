@@ -48,7 +48,6 @@ def hall_of_fame(content):
 
     # results are received by page
     while url:
-        print("Fetching:", url)
         resp = requests.get(url, headers=headers)
         data = resp.json()
 
@@ -99,8 +98,6 @@ def hall_of_fame(content):
                 })
 
         supporters_sorted = sorted(supporters, key=lambda x: x["total_cents"], reverse=True)
-        for s in supporters_sorted:
-            print(f"{s['name']:<25}  ${s['total_usd']:.2f}")
 
         # -------------------------------------------------------------
         # compute top supporters
@@ -108,8 +105,7 @@ def hall_of_fame(content):
         list_replacement = []
         for sup in supporters_sorted[:10]:
             name = sup["name"]
-            sub_str = f"* **{name}**"
-            list_replacement.append(sub_str)
+            list_replacement.append(f"* **{name}**")
 
         str_replacement = "\n".join(list_replacement)
         content = content.replace(str_to_replace, str_replacement)
