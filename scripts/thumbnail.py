@@ -102,7 +102,7 @@ def get_new_thumbnail_image(filepath, title, file_template):
         draw = ImageDraw.Draw(image)
 
         # font settings
-        font_box = (x, y, width, height)
+        font_box = (27, 360, 715, 235)
         font_text = title
         font_path = f"{BOOK_ROOT}/resources/mont.otf"
         font_color = (255, 255, 255, 255)
