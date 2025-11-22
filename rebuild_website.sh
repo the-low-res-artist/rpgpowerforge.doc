@@ -66,6 +66,10 @@ python3 ${ROOT}/scripts/post_build.py
 python3 ${ROOT}/scripts/generate_sitemap.py
 
 
+# ---------------------------------------------------------------
+# desactivate venv
+desactivate
+
 
 
 
@@ -176,8 +180,3 @@ python3 ${ROOT}/scripts/generate_sitemap.py
 # define $HOME for the user (www-data) 
 #export HOME=/home/www-data
 #git lfs install --force && git lfs fetch && git lfs checkout
-
-
-# ---------------------------------------------------------------
-# desactivate the virtual env
-deactivate

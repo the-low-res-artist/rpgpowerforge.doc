@@ -10,7 +10,7 @@ import random
 from PIL import ImageFont, ImageDraw, Image
 from datetime import datetime
 from pathlib import Path
-
+from bs4 import BeautifulSoup
 from config import config
 
 
@@ -62,7 +62,12 @@ def get_new_thumbnail_image(filepath, title, file_template):
         draw = ImageDraw.Draw(image)
 
         # text to draw
-        subtitle = "User manual"
+        subtitle = "Documentation"
+
+        print("============================")
+        print(filepath)
+        print(title)
+        print(subtitle)
 
         # create 2 fonts
         font_title = ImageFont.truetype(f"{BOOK_ROOT}/resources/mont.otf", 110)
@@ -112,21 +117,26 @@ def set_thumbnail(filepath):
 
     # ------------------------------------------------------------
     # Safely read the input file using 'with'
-    s= ""
+    content = ""
     with open(filepath, 'r', encoding="utf8") as f:
-        s = f.read()
+        content = f.read()
 
     # safe exit
-    if (s == ""):
+    if (content == ""):
         return
 
     # ------------------------------------------------------------
+    # Get the soup
+    soup = BeautifulSoup(content, 'lxml')
+
+    # ------------------------------------------------------------
     # get file title
-    titles = re.findall("<h1.+?><a.+?>(.+?)</a>", s)
-    if len(titles) > 0:
-        title = titles[0].replace("<strong>", "").replace("</strong>", "")
-    else:
-        title = "Documentation"
+    title = "Documentation"
+    for h1 in soup.find_all("h1"):
+        a = h1.find("a", class_="header")
+        if a:                           # keep only h1 that contains <a class="header">
+            title = a.get_text(strip=True)
+            break
 
     file_url = filepath.replace(BOOK_ROOT, config.website_root)
     description="The awesome documentation for the Unity package : RPG Power Forge"
@@ -176,16 +186,15 @@ def set_thumbnail(filepath):
 # =========================================================
 # entry point
 if __name__ == "__main__":
-    
+
     start = time.time()
 
     # ------------------------------------------------------------
     # iterate all files, find html files
     file_count = 0
     for filepath in Path(BOOK_ROOT).rglob("*.html"):
-        set_thumbnail(filepath)
+        set_thumbnail(str(filepath))
         file_count+=1
-        sys.exit(0)
 
     end = time.time()
     print(f"{file_count} thumbnails created in {str(round(end - start, 1))} sec")
