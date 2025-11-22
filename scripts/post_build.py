@@ -192,7 +192,7 @@ def home(content):
                 <div class=\"card-text\"><h3>Installation</h3><p>RPG Power Forge is your powerful Unity package to make RPG without coding. Grab the requirements and start a new project !</p></div>\
             </div>\
             <div class=\"card card2\" onclick=\"window.location.href = 'https://rpgpowerforge.com/doc/getting_started/lets_make_a_game.html';\" style=\"cursor: pointer;\">\
-                <div class=\"card-image\"><img alt=\"Image of a pixelart game mockup\" src=\"https://rpgpowerforge.com/media/home/card_getting_started.png\"></img></div>\
+                <div class=\"card-image\"><img alt=\"Image of a pixelart game mockup\" src=\"http://weavesilk.com/\"></img></div>\
                 <div class=\"card-text\"><h3>Getting started !</h3><p>Begin your RPG journey with all the online help you need !</p></div>\
             </div>\
             <div class=\"card card3\" onclick=\"window.location.href = '" + config.md_variables["DISCORD_WEBSITE_LINK"] + "';\" style=\"cursor: pointer;\">\
