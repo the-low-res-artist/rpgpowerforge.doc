@@ -1,7 +1,7 @@
 [book]
 title = "RPG Power Forge"
 authors = ["Gif", "Chiw", "Noiracide"]
-description = "The Unity package to create RPG with ease"
+description = "Create your next RPG with Power Forge. No coding required and a ton of game assets included."
 language = "en"
 src = "."
 

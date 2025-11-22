@@ -145,9 +145,9 @@ class config:
     # =============================================================================
     # youtube devlogs embedded
     devlogs = [
-        {"title":"RPG Power Forge 0.5 (sample)","iframe_src":"https://www.youtube.com/embed/y0sF5xhGreA?si=IZd2hC1kchiVtlvi"},
+        {"title":"RPG Power Forge 0.7 (sample)","iframe_src":"https://www.youtube.com/embed/y0sF5xhGreA?si=IZd2hC1kchiVtlvi"},
         {"title":"RPG Power Forge 0.6 (sample)","iframe_src":"https://www.youtube.com/embed/pxn0wL_uSm4?si=PNjljJmqxKf8Nkot"},
-        {"title":"RPG Power Forge 0.7 (sample)","iframe_src":"https://www.youtube.com/embed/LWzUt5uoDV0?si=RuNYDwVRG4c3NTVn"}
+        {"title":"RPG Power Forge 0.5 (sample)","iframe_src":"https://www.youtube.com/embed/LWzUt5uoDV0?si=RuNYDwVRG4c3NTVn"}
     ]   
        
 
@@ -159,5 +159,6 @@ class config:
         {"name":"🎵 Kashdan Music","link":"x.com/KashdanMusic", "comment": "for making most of our music and SFX."},
         {"name":"🖥️ Sunny Valley Studio","link":"x.com/SunnyVStudio", "comment": "for helping us during the dev."},
         {"name":"🎨 Zaebucca","link":"x.com/zaebucca", "comment": "for sharing his awesome game assets with this project."}
+        {"name":"👩🏻‍💻 Christina","link":"www.vennegerts.com/en/", "comment": "for helping us design the UI and UX."}
     ]   
         

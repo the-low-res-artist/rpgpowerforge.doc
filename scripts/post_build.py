@@ -402,6 +402,35 @@ def media_path(content):
 
 
 # =========================================================
+# set devlogs
+def devlogs(content):
+
+    # init
+    str_to_replace = "DEVLOGS_GO_HERE"
+    str_replacement = ""
+
+    devlog_id = 1
+    for dev in config.devlogs:
+        title = dev["title"]
+        src = dev["iframe_src"]
+        devlog_str = f"<h3>Devlog #{devlog_id} : {title}</h3>\n<iframe width=\"100%\" height=\"400\" src=\"{src}\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n"       
+        str_replacement = f"{str_replacement}\n{devlog_str}"
+        devlog_id += 1
+
+    return content.replace(str_to_replace, str_replacement)
+
+
+# =========================================================
+# set devlogs
+def favicon():
+
+    # update the favicon file
+    for ext in ["png", "svg"]:
+        src = f"{BOOK_ROOT}/media/icons/32x32.{ext}"
+        dst = f"{BOOK_ROOT}/doc/favicon.{ext}"
+        shutil.copy(src, dst)
+
+# =========================================================
 # entry point
 def main():
     
@@ -434,6 +463,7 @@ def main():
             content = footer(content)
             content = header(content)
             content = media_path(content)
+            favicon()
             
             # -----------------------------------------------------------------
             # name specific settings
@@ -441,6 +471,7 @@ def main():
             if (filepath.name == "devteam.html"): content = devteam(content)
             if (filepath.name == "lets_make_a_game.html"): content = lets_make_a_game(content)
             if (filepath.name == "installation.html"): content = installation(content)
+            if (filepath.name == "devlogs.html"): content = devlogs(content)
 
             # -----------------------------------------------------------------                    
             # Save the updated content
@@ -449,8 +480,6 @@ def main():
 
             # update the roadmap page
             #python3 -m roadmap.py || true
-            # update devlog embedded videos
-            #python3 -m devlogs.py || true
             # update features progress
             #python3 -m features.py || true
 
