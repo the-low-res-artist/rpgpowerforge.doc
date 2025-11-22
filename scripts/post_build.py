@@ -383,6 +383,23 @@ def header(content):
     
     return content.replace(str_to_replace, str_replacement) 
 
+# =========================================================
+# set media src path absolute
+def media_path(content):
+
+    # init
+    soup = BeautifulSoup(content, "lxml")
+    pattern = re.compile(r'^(?:\./|\.\./)+')
+
+    # Update all <img> tags
+    for img in soup.find_all("img"):
+        src = img.get("src")
+        if src:
+            cleaned_src = pattern.sub("", src)  # remove leading relative paths
+            img["src"] = config.website_root+ "/" + cleaned_src.lstrip("/")
+
+    return str(soup)
+
 
 # =========================================================
 # entry point
@@ -416,6 +433,7 @@ def main():
             content = title_icon(content)
             content = footer(content)
             content = header(content)
+            content = media_path(content)
             
             # -----------------------------------------------------------------
             # name specific settings

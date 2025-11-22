@@ -77,16 +77,6 @@ deactivate
 
 #cd ${root_dir}
 
-# process remaining output folders
-#for folder in $(find book -type d);
-#do
-    # process folder
-    # add folders links (css, js, media, ...)
-#    ln -s ${root_dir}/media/ ${root_dir}/${folder}/media
-#    ln -s ${root_dir}/custom-js/ ${root_dir}/${folder}/custom-js
-#    ln -s ${root_dir}/custom-css/ ${root_dir}/${folder}/custom-css
-#done
-
 # ---------------------------------------------------------------
 # WHATS NEW MARKDOWN
 #input_md=${root_dir}/src/doc/latest_news.md
@@ -100,11 +90,3 @@ deactivate
 # Now the website is built, we can add metadata files
 # robots.txt
 #cp ${root_dir}/resources/robots.txt ${root_dir}/book/robots.txt
-
-# ---------------------------------------------------------------
-# LARGE FILE DOWNLOAD
-#echo "[ GIT LFS CHECKOUT PART ] "
-#cd ${root_dir}
-# define $HOME for the user (www-data) 
-#export HOME=/home/www-data
-#git lfs install --force && git lfs fetch && git lfs checkout
