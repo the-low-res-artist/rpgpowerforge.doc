@@ -425,10 +425,13 @@ def devlogs(content):
 def favicon():
 
     # update the favicon file
-    for ext in ["png", "svg"]:
-        src = f"{BOOK_ROOT}/media/icons/32x32.{ext}"
-        dst = f"{BOOK_ROOT}/doc/favicon.{ext}"
-        shutil.copy(src, dst)
+    src = f"{BOOK_ROOT}/media/icons/32x32.png"
+    dst = f"{BOOK_ROOT}/doc/favicon.png"
+    shutil.copy(src, dst)
+
+    src = f"{BOOK_ROOT}/media/icons/icon.svg"
+    dst = f"{BOOK_ROOT}/doc/favicon.svg"
+    shutil.copy(src, dst)
 
 # =========================================================
 # entry point
