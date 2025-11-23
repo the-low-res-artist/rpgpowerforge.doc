@@ -1,13 +1,12 @@
-# title
+
 [Home](./home.md)
 [Latest News !](./news.md)
-# title
+# Documentation 📗
 * [Installation]()
     * [Introduction](./installation/installation.md)
     * [Install Unity](./installation/installation_unity.md)
     * [Download RPG Power Forge](./installation/download_rpg_power_forge.md)
     * [Create a new project](./installation/create_new_project.md)
-# title
 * [User manual]()
     * [Assets management]()
         * [Assets Importer]()
@@ -62,16 +61,14 @@
         * [Markers]()
         * [Controllers]()
         * [Unity Editor layouts]()
-# title
 * [About the project]()
     * [Dev Logs](./about/devlogs.md)
     * [Dev Team](./about/devteam.md)
     * [Dev Roadmap](./about/roadmap.md)
     * [Dev Features](./about/features.md)
     * [Presentation](./about/presentation.md)
-# title
-* [Support us !]()
-    * [link_patreon]()
-    * [Supporters Hall of Fame](./support/hall_of_fame.md)
+# Support us ❤️
+* [link_patreon]()
+* [Supporters Hall of Fame](./support/hall_of_fame.md)
 
 
