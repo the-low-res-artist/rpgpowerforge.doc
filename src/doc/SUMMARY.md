@@ -1,7 +1,7 @@
 
 [Home](./home.md)
 [Latest News !](./news.md)
-# Documentation 📗
+# Documentation 📚
 * [Installation]()
     * [Introduction](./installation/installation.md)
     * [Install Unity](./installation/installation_unity.md)
