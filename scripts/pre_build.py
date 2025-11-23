@@ -17,7 +17,6 @@ from config import config
 SRC_ROOT = "/home/www-data/rpgpowerforge/src/"
 PATREON_API_BASE_URL = "https://www.patreon.com/api/oauth2/v2"
 PATREON_CAMPAIGN_ID = "12005895"
-ACCESS_TOKEN = "_YNczPWoKiY4-tXsfexmqACPX7iTSBjPX8Uwa2eH1Kk"
 
 # =========================================================
 # set the hall of fame
@@ -41,7 +40,7 @@ def hall_of_fame(content):
     include = "pledge_history&fields%5Bmember%5D=full_name"
     token = os.getenv("PATREON_ACCESS_TOKEN_ALL_OF_FAME")
     url = f"{PATREON_API_BASE_URL}/campaigns/{PATREON_CAMPAIGN_ID}/members?include={include}"
-    headers = { "Authorization": f"Bearer {ACCESS_TOKEN}" }
+    headers = { "Authorization": f"Bearer {token}" }
 
     all_members = []
     all_events = []
