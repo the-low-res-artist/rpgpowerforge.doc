@@ -1,5 +1,5 @@
 [Home](./home.md)
-[Latest News !](./rpgpowerforge.news/latest_news.md)
+[Latest News !](./rpgpowerforge.news/news.md)
 * [Installation]()
     * [Introduction](./installation/installation.md)
     * [Install Unity](./installation/installation_unity.md)

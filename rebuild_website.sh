@@ -68,8 +68,11 @@ python3 ${ROOT}/scripts/thumbnail.py
 
 # ---------------------------------------------------------------
 # COMPRESS TUTORIAL RESOURCES
-#cd ${root_dir}/media/
-zip -r ${ROOT}/media/power_forge_resources.zip ${ROOT}/media/power_forge_resources
+if zip -rq ${ROOT}/media/power_forge_resources.zip ${ROOT}/media/power_forge_resources; then
+    echo "Tutorial resources archived."
+else
+    echo "Tutorial archive failed."
+fi
 
 # ---------------------------------------------------------------
 # DEACTIVATE VENV
