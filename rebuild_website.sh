@@ -52,12 +52,13 @@ done
 cp ${ROOT}/resources/hero.html ${ROOT}/book/index.html
 
 # ---------------------------------------------------------------
-# MAKE RESOURCES AVAILABLE
-ln -s ${ROOT}/custom-font ${ROOT}/book/custom-font
-ln -s ${ROOT}/custom-css  ${ROOT}/book/custom-css
-ln -s ${ROOT}/custom-js   ${ROOT}/book/custom-js
-ln -s ${ROOT}/media       ${ROOT}/book/media
-ln -s ${ROOT}/resources   ${ROOT}/book/resources
+# MAKE MEDIA & RESOURCES AVAILABLE
+ln -s ${ROOT}/custom-font                       ${ROOT}/book/custom-font
+ln -s ${ROOT}/custom-css                        ${ROOT}/book/custom-css
+ln -s ${ROOT}/custom-js                         ${ROOT}/book/custom-js
+ln -s ${ROOT}/media                             ${ROOT}/book/media
+ln -s ${ROOT}/resources                         ${ROOT}/book/resources
+ln -s ${ROOT}/src/doc/rpgpowerforge.new/news    ${ROOT}/book/news
 
 # ---------------------------------------------------------------
 # POST BUILD SCRIPTS
