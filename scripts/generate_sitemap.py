@@ -12,7 +12,6 @@ from config import config
 # constant values
 BOOK_ROOT = "/home/www-data/rpgpowerforge/book"
 
-
 # =========================================================
 class Url:
     def __init__(self, loc):
@@ -82,5 +81,10 @@ def generate_sitemap(website_root, sitemap_filepath):
 # =========================================================
 # entry point
 if __name__ == "__main__":
+    
+    # generate the sitemap file
     generate_sitemap(BOOK_ROOT, f"{BOOK_ROOT}/sitemap.xml")
+    # copy the crawler file
+    shutil.copyfile(f"{BOOK_ROOT}/resources/robots.txt", f"{BOOK_ROOT}/robots.txt")
+    # exit
     sys.exit(0)

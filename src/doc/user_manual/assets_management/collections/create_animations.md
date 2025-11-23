@@ -50,5 +50,5 @@ Here's another example, using the RPG Maker MV/MZ Vertical template (chests and 
 
 
 ```admonish tip title="User manual resources"
-You can download all of our tutorial resources here (including all RPG Maker templates): [download user_resources.zip file](https://rpgpowerforge.com/media/user_resources.zip)
+You can download all of our tutorial resources here (including all RPG Maker templates): [download power_forge_resources.zip file](https://rpgpowerforge.com/media/power_forge_resources.zip)
 ```

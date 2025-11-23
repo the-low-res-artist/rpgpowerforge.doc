@@ -67,15 +67,13 @@ python3 ${ROOT}/scripts/generate_sitemap.py
 python3 ${ROOT}/scripts/thumbnail.py
 
 # ---------------------------------------------------------------
-# desactivate venv
-deactivate
-
-
-## zip user manual resources files
+# COMPRESS TUTORIAL RESOURCES
 #cd ${root_dir}/media/
-#zip -r user_resources.zip user_resources || true
+zip -r ${ROOT}/media/power_forge_resources.zip ${ROOT}/media/power_forge_resources
 
-#cd ${root_dir}
+# ---------------------------------------------------------------
+# DEACTIVATE VENV
+deactivate
 
 # ---------------------------------------------------------------
 # WHATS NEW MARKDOWN
@@ -84,9 +82,3 @@ deactivate
 #output_hash=${output_md}.sha256
 #cp ${input_md} ${output_md}
 #sha256sum ${output_md} | awk '{print $1}' > ${output_hash}
-
-# ---------------------------------------------------------------
-# WEBSITE METADATA
-# Now the website is built, we can add metadata files
-# robots.txt
-#cp ${root_dir}/resources/robots.txt ${root_dir}/book/robots.txt

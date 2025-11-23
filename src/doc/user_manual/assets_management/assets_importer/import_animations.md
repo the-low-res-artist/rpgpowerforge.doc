@@ -32,7 +32,7 @@ Let's import this sample Sprite Sheet (a character walking in 4 directions) :
 ![import_animation_spritesheet.png](../../../../../../media/user_resources/import_animation_spritesheet.png)
 
 ```admonish tip title="User manual resources"
-You can download all of our tutorial resources here : [download user_resources.zip file](https://rpgpowerforge.com/media/user_resources.zip)
+You can download all of our tutorial resources here : [download power_forge_resources.zip file](https://rpgpowerforge.com/media/power_forge_resources.zip)
 ```
 
 #### Import the Sprite Sheet file
@@ -95,7 +95,7 @@ Instead of a Sprite Sheet, you can import a directory full of individual Sprites
 ![import_animation_sprite_directory_hierarchy.png](../../../../../../media/user_manual/assets_management/import_animation/import_animation_sprite_directory_hierarchy.png)
 
 ```admonish tip title="User manual resources"
-You can download all of our tutorial resources here : [download user_resources.zip file](https://rpgpowerforge.com/media/user_resources.zip)
+You can download all of our tutorial resources here : [download power_forge_resources.zip file](https://rpgpowerforge.com/media/power_forge_resources.zip)
 ```
 
 When importing "import_sprites_directory", RPG Power Forge will automatically :

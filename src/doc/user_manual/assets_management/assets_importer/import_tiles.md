@@ -26,5 +26,5 @@ Let's import this sample tileset (roads, cliff and grass texture) :
 ![import_tiles_spritesheet.png](../../../../../../media/user_resources/import_tiles_spritesheet.png)
 
 ```admonish tip title="User manual resources : import_tiles_spritesheet.png"
-You can download all of our tutorial resources here : [download user_resources.zip file](https://rpgpowerforge.com/media/user_resources.zip)
+You can download all of our tutorial resources here : [download power_forge_resources.zip file](https://rpgpowerforge.com/media/power_forge_resources.zip)
 ```
