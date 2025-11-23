@@ -10,6 +10,12 @@ img.nav-logo {
 }
 
 /* ----------------------------------------------------------------*/
+/* bigger part titles */
+.chapter li.part-title {
+    font-size: 18px;
+}
+
+/* ----------------------------------------------------------------*/
 /* space chapter items */
 .chapter li>div {
     padding: 3px 10px 3px 10px;
