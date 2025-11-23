@@ -16,6 +16,7 @@ ROOT=/home/www-data/rpgpowerforge
 cd ${ROOT}
 python3 -m venv venv
 source venv/bin/activate
+source /etc/rpgpowerforge/vars.ini
 
 # ---------------------------------------------------------------
 # requirements
