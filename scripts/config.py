@@ -16,10 +16,10 @@ class config:
     # =============================================================================
     # variables to replace in md files
     md_variables = {
-        "VAR_UNITY_HUB_MIN_VERSION" : "3.8",
-        "VAR_UNITY_SHORT_MIN_VERSION" : "2022.3",
-        "VAR_UNITY_MIN_VERSION" : "2022.3.34f1",
-        "VAR_RPF_RECOMMENDED_VERSION" : "0.3.0",
+        "VAR_UNITY_HUB_MIN_VERSION" : "3.15.4",
+        "VAR_UNITY_SHORT_MIN_VERSION" : "6000.0",
+        "VAR_UNITY_MIN_VERSION" : "6000.0.58f1",
+        "VAR_RPF_RECOMMENDED_VERSION" : "0.5.0",
 
         "TRELLO_WEBSITE_LINK": "https://trello.com/b/PIzgsYov/road-map",
         "TWITTER_WEBSITE_LINK": "https://twitter.com/RPGPowerForge",
