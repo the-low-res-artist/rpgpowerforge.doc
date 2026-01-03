@@ -3,7 +3,7 @@
 This section covers the creation of a new Unity project with RPG Power Forge !
 
 ```admonish success title="Oh yeah"
-This section is up-to-date for Unity 2022.3 !
+This section is up-to-date for Unity 6000.0 !
 ```
 
 ## Summary

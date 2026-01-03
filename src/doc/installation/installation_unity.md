@@ -3,10 +3,8 @@
 This section covers the download and installation process for Unity Hub and Unity Editor.
 
 ```admonish success title="Oh yeah"
-This section is up-to-date with Unity 2022.3 !
+This section is up-to-date with Unity 6000.0 !
 ```
-
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/9FtY7oLVnAs?si=9_9fJidTdIDp9IYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Summary
 
