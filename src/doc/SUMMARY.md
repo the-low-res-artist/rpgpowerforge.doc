@@ -1,6 +1,6 @@
 
 [Home](./home.md)
-[Latest News !](./news.md)
+[Latest News !](./rpgpowerforge.news/news.md)
 # Documentation 📚
 * [Installation]()
     * [Introduction](./installation/installation.md)
